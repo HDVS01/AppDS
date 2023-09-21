@@ -7,6 +7,11 @@
 import SwiftUI
 
 struct LiveSession: View {
+ 
+    @State var isPresented: Bool = false
+    @State var selectedImage: UIImage?
+    @State var sourceType: UIImagePickerController.SourceType = .camera
+    @ObservedObject var classifier: ImageClassifier
     var body: some View {
         VStack {
             ZStack(alignment: .bottom) {
@@ -29,8 +34,72 @@ struct LiveSession: View {
             
             Spacer()
             
+            VStack{
+                
+                
+                Rectangle()
+                    .strokeBorder()
+                    .foregroundColor(.yellow)
+                    .overlay(
+                        Group {
+                            if selectedImage != nil {
+                                Image(uiImage: selectedImage!)
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                        }
+                    )
+                
+                
+                VStack{
+                    Button(action: {
+                        if selectedImage != nil {
+                            classifier.detect(uiImage: selectedImage!)
+                        }
+                    }) {
+                        Image(systemName: "bolt.fill")
+                            .foregroundColor(.orange)
+                            .font(.title)
+                    }
+                    
+                    
+                    Group {
+                        if let imageClass = classifier.imageClass {
+                            HStack{
+                                Text("Image categories:")
+                                    .font(.caption)
+                                Text(imageClass)
+                                    .bold()
+                            }
+                        } else {
+                            HStack{
+                                Text("Image categories: NA")
+                                    .font(.caption)
+                            }
+                        }
+                    }
+                    .font(.subheadline)
+                    .padding()
+                    
+                }
+            }
+            
+            .sheet(isPresented: $isPresented){
+                ImagePickerView(selectedImage: $selectedImage, isPresented:  $isPresented, sourceType: $sourceType)
+                    .onDisappear{
+                        if selectedImage != nil {
+                            classifier.detect(uiImage: selectedImage!)
+                        }
+                    }
+                
+            }
+            
+            .padding()
+            
             HStack {
                 Button(action: {
+                    isPresented = true
+                    sourceType = .camera
                 }) {
                     Text("Escanear")
                         .frame(width: 200, height:.infinity)
@@ -55,6 +124,6 @@ struct LiveSession: View {
 
 struct LiveSession_Previews: PreviewProvider {
     static var previews: some View {
-        LiveSession()
+        LiveSession(classifier: ImageClassifier())
     }
 }

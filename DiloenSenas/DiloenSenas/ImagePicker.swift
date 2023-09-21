@@ -11,6 +11,7 @@ import UIKit
 struct ImagePickerView: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
     @Binding var isPresented: Bool
+    @Binding var sourceType: UIImagePickerController.SourceType
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -18,6 +19,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
+        picker.sourceType = sourceType
         picker.delegate = context.coordinator
         return picker
     }
@@ -37,5 +39,11 @@ struct ImagePickerView: UIViewControllerRepresentable {
             }
             parent.isPresented = false
         }
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+
+          parent.isPresented = false
+
+        }
+
     }
 }

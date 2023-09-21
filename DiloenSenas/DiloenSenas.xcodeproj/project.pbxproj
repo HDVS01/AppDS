@@ -19,6 +19,9 @@
 		AF9BD6D12ABBD8B7007E4841 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BD6D02ABBD8B7007E4841 /* CreateGameView.swift */; };
 		AF9BD6D32ABBD8F9007E4841 /* LiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BD6D22ABBD8F9007E4841 /* LiveSessionView.swift */; };
 		AF9BD6D52ABBE620007E4841 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BD6D42ABBE620007E4841 /* QuestionModel.swift */; };
+		FB148AC82ABCCF7900AFC54A /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB148AC72ABCCF7900AFC54A /* ImageClassifier.swift */; };
+		FB148ACA2ABCCF8100AFC54A /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB148AC92ABCCF8100AFC54A /* Classifier.swift */; };
+		FB148ACC2ABCD04300AFC54A /* PerrosyGatos1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = FB148ACB2ABCD04300AFC54A /* PerrosyGatos1.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		AF9BD6D02ABBD8B7007E4841 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		AF9BD6D22ABBD8F9007E4841 /* LiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSessionView.swift; sourceTree = "<group>"; };
 		AF9BD6D42ABBE620007E4841 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		FB148AC72ABCCF7900AFC54A /* ImageClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageClassifier.swift; path = ../../../../PruebaRealidad/tomarFoto/tomarFoto/ImageClassifier.swift; sourceTree = "<group>"; };
+		FB148AC92ABCCF8100AFC54A /* Classifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Classifier.swift; path = ../../../../PruebaRealidad/tomarFoto/tomarFoto/Classifier.swift; sourceTree = "<group>"; };
+		FB148ACB2ABCD04300AFC54A /* PerrosyGatos1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = PerrosyGatos1.mlmodel; path = ../../../../PerrosyGatos1.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +78,12 @@
 				AF9BD6CA2ABBD883007E4841 /* JoinSessionView.swift */,
 				AF9BD6CC2ABBD895007E4841 /* CreateSessionView.swift */,
 				AF9BD6CE2ABBD8A5007E4841 /* LobbySessionView.swift */,
+				FB148ACB2ABCD04300AFC54A /* PerrosyGatos1.mlmodel */,
 				AF9BD6D22ABBD8F9007E4841 /* LiveSessionView.swift */,
 				AF9BD6D02ABBD8B7007E4841 /* CreateGameView.swift */,
+				FB148AC92ABCCF8100AFC54A /* Classifier.swift */,
 				AF815E412ABCC0D400B35168 /* ImagePicker.swift */,
+				FB148AC72ABCCF7900AFC54A /* ImageClassifier.swift */,
 				AF815E3F2ABCBF0D00B35168 /* QuestionView.swift */,
 				AF9BD6D42ABBE620007E4841 /* QuestionModel.swift */,
 				AF9BD6C02ABBD84F007E4841 /* Assets.xcassets */,
@@ -162,8 +171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF9BD6D12ABBD8B7007E4841 /* CreateGameView.swift in Sources */,
+				FB148AC82ABCCF7900AFC54A /* ImageClassifier.swift in Sources */,
 				AF9BD6CB2ABBD883007E4841 /* JoinSessionView.swift in Sources */,
+				FB148ACC2ABCD04300AFC54A /* PerrosyGatos1.mlmodel in Sources */,
 				AF9BD6D32ABBD8F9007E4841 /* LiveSessionView.swift in Sources */,
+				FB148ACA2ABCCF8100AFC54A /* Classifier.swift in Sources */,
 				AF9BD6CF2ABBD8A5007E4841 /* LobbySessionView.swift in Sources */,
 				AF9BD6CD2ABBD895007E4841 /* CreateSessionView.swift in Sources */,
 				AF9BD6D52ABBE620007E4841 /* QuestionModel.swift in Sources */,

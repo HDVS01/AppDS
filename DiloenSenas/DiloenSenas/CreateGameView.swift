@@ -12,6 +12,7 @@ struct CreateGameView: View {
     @ObservedObject var createGameModel: CreateGameModel
     @State private var selectedImage: Image? // Para seleccionar una Image
     @State private var selectedUIImage: UIImage? // Para almacenar el UIImage
+    @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
 
     var body: some View {
         VStack {
@@ -33,7 +34,7 @@ struct CreateGameView: View {
             }
             .sheet(isPresented: $createGameModel.isShowingImagePicker, content: {
                 // Presentar el ImagePicker
-                ImagePickerView(selectedImage: $selectedUIImage, isPresented: $createGameModel.isShowingImagePicker)
+                ImagePickerView(selectedImage: $selectedUIImage, isPresented: $createGameModel.isShowingImagePicker, sourceType: $sourceType)
             })
 
             // Resto de la vista CreateGameView

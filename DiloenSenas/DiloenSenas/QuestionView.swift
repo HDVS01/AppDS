@@ -10,6 +10,7 @@ import SwiftUI
 struct QuestionView: View {
     @Binding var question: Question
     @State private var isShowingImagePicker = false
+    @State var sourceType: UIImagePickerController.SourceType = .camera
 
     var body: some View {
         Form { // Utiliza Form para organizar las vistas en secciones
@@ -29,7 +30,7 @@ struct QuestionView: View {
                 Text("Seleccionar Imagen")
             }
             .sheet(isPresented: $isShowingImagePicker, content: {
-                ImagePickerView(selectedImage: $question.image, isPresented: $isShowingImagePicker)
+                ImagePickerView(selectedImage: $question.image, isPresented: $isShowingImagePicker,sourceType: $sourceType)
             })
 
             // Mostrar la imagen seleccionada si existe
