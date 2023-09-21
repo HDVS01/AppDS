@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct MainView: View {    
     var body: some View {
+        
+        
         NavigationView {
             VStack {
                 Text("Escapa en Señas!")
@@ -37,6 +39,10 @@ struct MainView: View {
                             .cornerRadius(10)
                     }
                     .padding()
+                    NavigationLink(destination: LiveSession()){
+                        Text("Live session")
+                            .frame()
+                    }
                 }
                 Spacer()
             }
