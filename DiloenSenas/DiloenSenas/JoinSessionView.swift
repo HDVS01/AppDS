@@ -74,7 +74,7 @@ struct JoinSessionView: View {
                         .padding()
                         
                         NavigationLink(
-                            destination: LiveSession(classifier: ImageClassifier()),
+                            destination: LiveSession(viewModel: LiveSessionViewModel()),
                             isActive: $isSessionJoined,
                             label: {
                                 EmptyView()

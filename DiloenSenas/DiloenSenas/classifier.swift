@@ -15,7 +15,7 @@ struct Classifier {
     
     mutating func detect(ciImage: CIImage) {
         
-        guard let model = try? VNCoreMLModel(for: ClasificadorDeImagenes_(configuration: MLModelConfiguration()).model)
+        guard let model = try? VNCoreMLModel(for: PerrosyGatos1(configuration: MLModelConfiguration()).model)
         else {
             return
         }
@@ -35,5 +35,23 @@ struct Classifier {
         }
         
     }
+    /*func detect(ciImage: CIImage) -> String? {
+        guard let model = try? VNCoreMLModel(for: PerrosyGatos1(configuration: MLModelConfiguration()).model) else {
+            return nil
+        }
+        
+        let request = VNCoreMLRequest(model: model)
+        
+        let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
+        
+        try? handler.perform([request])
+        
+        guard let results = request.results as? [VNClassificationObservation], let firstResult = results.first else {
+            return nil
+        }
+        
+        return firstResult.identifier
+    }*/
+
     
 }
