@@ -10,22 +10,17 @@ import SwiftUI
 
 class LiveSessionViewModel: ObservableObject {
     @Published var imageClassifier: ImageClassifier = ImageClassifier()
+    @StateObject var ObjectVM = ObjectViewModel()
+    @Published var objectsToScan: [ObjectModel] = []
     
-    // Lista de objetos a escanear y sus instrucciones
-    var objectsToScan: [(name: String, instructions: String)] = [
-        ("cat", "Encuentra el cat  en la imagen."),
-        ("dog", "Encuentra el dog  en la imagen."),
-        // Agrega más objetos e instrucciones según sea necesario
-    ]
+    
+    // Lista de objetos a escanear y sus instruciones
     
     @Published var currentObjectIndex: Int = 0
     
-    var currentInstructions: String {
-        return objectsToScan[currentObjectIndex].instructions
-    }
-    
     init() {
         // Configuración inicial del ViewModel si es necesario
+        fetchObjectsToScanFromAPI()
     }
     
     func objectDetectedSuccessfully() {
@@ -39,4 +34,20 @@ class LiveSessionViewModel: ObservableObject {
             currentObjectIndex = 0
         }
     }
+    
+    func fetchObjectsToScanFromAPI() {
+            if let url = URL(string: "https://api-senas.onrender.com/objects") {
+                URLSession.shared.dataTask(with: url) { data, response, error in
+                    if let data = data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let apiResponse = try decoder.decode(APIResponse.self, from: data)
+                            self.objectsToScan = apiResponse.users
+                        } catch {
+                            print("Error decoding JSON: \(error)")
+                        }
+                    }
+                }.resume()
+            }
+        }
 }

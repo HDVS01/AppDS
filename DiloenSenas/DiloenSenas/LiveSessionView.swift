@@ -29,8 +29,6 @@ struct LiveSession: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 190) // Tamaño de la imagen/video
-                    Text(viewModel.currentInstructions) // Muestra las instrucciones actuales
-                       
                     Text("Instrucciones")
                         .font(.headline)
                         .padding()
