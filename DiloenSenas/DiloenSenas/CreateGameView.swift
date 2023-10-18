@@ -1,10 +1,9 @@
 //
 //  CreateGameView.swift
-//  DiloenSenas
+//  api-senas-post
 //
-//  Created by Alicia Ayón on 20/9/23.
+//  Created by user240259 on 10/17/23.
 //
-
 
 import SwiftUI
 import UIKit
@@ -17,7 +16,7 @@ struct CreateGameView: View {
     @State private var selectedImage: Image? // Para seleccionar una Image
     @State private var selectedUIImage: UIImage? // Para almacenar el UIImage
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    
+   
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -30,75 +29,41 @@ struct CreateGameView: View {
             .zIndex(0)
             ScrollView{
                 VStack {
-                    //¡Crea tu propio  Escape!
+                    Spacer(minLength: 20)
                     Text("¡CREA TU PROPIO ESCAPE!").font(Font.custom("Rowdies", size: 45)).foregroundColor(Color(red: 55/255, green: 215/255, blue: 70/255))
-                    
-                    ZStack(alignment: .bottom) {
-                        Rectangle()
-                            .foregroundColor(Color(red: 55/255, green: 215/255, blue: 70/255))
-                            .cornerRadius(10)
-                            .frame(width: 330, height: 200)
-                        
-                        VStack(spacing: 0) {
-                            Image(systemName: "photo.fill") // aquí va la imagen o el video
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 100) // Tamaño de la imagen/video
-                                .padding()
-                            
-                            if let selectedImage = selectedImage {
-                                // Mostrar la Image seleccionada
-                                selectedImage
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxHeight: 200)
-                            }
-                            
-                            Button(action: {
-                                // Presentar el selector de imágenes
-                                createGameModel.isShowingImagePicker = true
-                            }) {
-                                Text("Seleccionar Imagen").font(.custom("JungleHope", size: 15)).foregroundColor(Color.black)
-                                    .padding()
-                                    .underline()
-                            }
-                            .sheet(isPresented: $createGameModel.isShowingImagePicker, content: {
-                                // Presentar el ImagePicker
-                                ImagePickerView(selectedImage: $selectedUIImage, isPresented: $createGameModel.isShowingImagePicker, sourceType: $sourceType)
-                            })
-                            
-                        }
-                    }
+                   Spacer(minLength: 25)
+           
                     // Título
                     Text("Título del Escape").font(.custom("Rowdies", size: 25)).foregroundColor(Color(red: 55/255, green: 215/255, blue: 70/255))
-                    
+                   
                     TextField("Título", text: $createGameModel.titulo)
-                        .font(.custom("Rowdies-Bold", size: 15))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(width: 500) // Establece el ancho máximo
                         .multilineTextAlignment(.center) // Centra el texto dentro del TextField}
                         .cornerRadius(10)
-                    
+                   
                     // Descripción
                     Text("Descripción").font(.custom("Rowdies-Regular", size: 22)).foregroundColor(Color(red: 55/255, green: 215/255, blue: 70/255))
                     Spacer()
-                    TextField("Descripción", text: $createGameModel.descripcion).font(.custom("Rowdies-Bold", size: 15)).foregroundColor(Color.black)
+                    TextField("Descripción", text: $createGameModel.descripcion)
+                        .foregroundColor(Color.black)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(width: 500) // Establece el ancho máximo
                         .multilineTextAlignment(.center) // Centra el texto dentro del TextField
                         .cornerRadius(10)
-                    
-                    
+                   
+                   
                     // Visibilidad (usando Picker para seleccionar entre "Pública" y "Privada")
                     Text("Visibilidad").font(.custom("Rowdies", size: 22)).foregroundColor(Color(red: 55/255, green: 215/255, blue: 70/255)).bold()
                     Picker("Visibilidad", selection: $createGameModel.visibilidad) {
-                        Text("Pública").tag("Pública")
-                        Text("Privada").tag("Privada")
-                            .multilineTextAlignment(.center)
-                            .font(.custom("Rowdies-Regular", size: 22))
-                            // Centra el texto dentro del TextField
+                        Text("Pública")
+                            .tag("Pública")
+                            .font(Font.custom("Rowdies", size: 45))
+                        Text("Privada")
+                            .tag("Privada")
+                            .font(Font.custom("Rowdies", size: 45))
                     }
-                    
+                   
                     .pickerStyle(SegmentedPickerStyle()).frame(width: 500).cornerRadius(10)
                     Spacer()
                 }
@@ -110,15 +75,15 @@ struct CreateGameView: View {
                         .multilineTextAlignment(.center) // Centra el texto dentro del TextField
                 }
                 .pickerStyle(SegmentedPickerStyle()).frame(width: 500).cornerRadius(10)
-                Spacer()
-                
+                Spacer(minLength: 30)
+               
                 VStack {
                     Text("Selecciona los objetos que utilizarás en el ESCAPE")
                         .font(.custom("Rowdies-Regular", size: 22))
                         .foregroundColor(Color(red: 55/255, green: 215/255, blue: 70/255))
                         .bold()
                     Spacer(minLength: 20)
-                    
+                   
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 20), GridItem(.flexible(), spacing: 20)]) {
                         Toggle("Lápiz", isOn: $objectsToggle.lapizToggle)          .font(.custom("Rowdies-Regular", size: 22))
                         Toggle("Pluma", isOn: $objectsToggle.plumaToggle)
@@ -137,7 +102,7 @@ struct CreateGameView: View {
                             .font(.custom("Rowdies-Regular", size: 22))
                         Toggle("Pegamento", isOn: $objectsToggle.pegamentoToggle)     .font(.custom("Rowdies-Regular", size: 22))
 
-                        
+                       
                     }
                 }
                 Spacer(minLength: 30)
@@ -187,35 +152,33 @@ struct CreateGameView: View {
                    }
 
                }
-                
-                HStack {
+               
+                VStack {
+                    Spacer(minLength: 15)
                     Button(action: {
-                        // Acción de guardar
+                        
+                        
+                        postData()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4){
+                            postDataObjects()
+                            
+                        }
+                        
+                        
                     }) {
                         Text("Guardar")
                             .frame(width: 150, height: 50)
-                            .background(Color(red: 255/255, green: 87/255, blue: 50/255))
+                            .background(Color(red: 55/255, green: 215/255, blue: 70/255))
                             .foregroundColor(.white)
                             .cornerRadius(10)
-                    }
-                    Button(action: {
-                        // Aquí debes agregar una nueva pregunta al arreglo de preguntas
-                        let nuevaPregunta = Question(title: "", description: "", image: nil, icon: nil)
-                        createGameModel.preguntas.append(nuevaPregunta)
-                        print("Nueva pregunta agregada. Total de preguntas: \(createGameModel.preguntas.count)")
+                            .font(Font.custom("Rowdies", size: 25))
                         
-                    }) {
-                        Text("Nueva Pregunta")
-                            .frame(width: 200, height: 50)
-                            .background(Color(red: 255/255, green: 87/255, blue: 50/255))
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+
                     }
-                    
-                    .padding()
+
                 }
                 Spacer()
-                
+               
             }
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -223,24 +186,295 @@ struct CreateGameView: View {
             .alignmentGuide(.top) { _ in 0 }
         }
     }
+    func postData() {
+        let url = URL(string: "https://api-senas.onrender.com/escapes/add")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "TITLE": createGameModel.titulo,
+            "DESCRIPTION": createGameModel.descripcion,
+            "VISIBILITY": "PUBLIC",
+            "APPLEID_CREATOR": "apple id 1",
+            "DATE_OF_CREATION": "2023-10-01T00:00:00.000Z",
+            "ACTIVE": "Active",
+            "CATEGORIES_ID": 3
+        ]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+        } catch {
+            print("Error creating JSON data: \(error)")
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error)")
+            } else if let data = data {
+                if let responseString = String(data: data, encoding: .utf8) {
+                    print("Response: \(responseString)")
+                }
+            }
+        }
+        
+        task.resume()
+    }
+    func postDataObjects() {
+        let url = URL(string: "https://api-senas.onrender.com/escapes_objects/addWithRecentEscape")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if objectsToggle.lapizToggle {
+            
+            let parameters: [String: Any] = [
+                "OBJECTS_ID": 1,
+                "VIDEO_CLUES_ID": 1,
+                "DATE_OF_CREATION": "2023-10-01T00:00:00.000Z",
+                "ACTIVE": "Active"
+            ]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+            } catch {
+                print("Error creating JSON data: \(error)")
+                return
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let data = data {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Response: \(responseString)")
+                    }
+                }
+            }
+            
+            task.resume()
+        }
+    
+    if objectsToggle.libretaToggle {
+        
+        let parameters: [String: Any] = [
+            "OBJECTS_ID": 12,
+            "VIDEO_CLUES_ID": 1,
+            "DATE_OF_CREATION": "2023-10-01T00:00:00.000Z",
+            "ACTIVE": "Active"
+        ]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+        } catch {
+            print("Error creating JSON data: \(error)")
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error)")
+            } else if let data = data {
+                if let responseString = String(data: data, encoding: .utf8) {
+                    print("Response: \(responseString)")
+                }
+            }
+        }
+        
+        task.resume()
+    }
+        if objectsToggle.borradorToggle {
+            
+            let parameters: [String: Any] = [
+                "OBJECTS_ID": 7,
+                "VIDEO_CLUES_ID": 1,
+                "DATE_OF_CREATION": "2023-10-01T00:00:00.000Z",
+                "ACTIVE": "Active"
+            ]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+            } catch {
+                print("Error creating JSON data: \(error)")
+                return
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let data = data {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Response: \(responseString)")
+                    }
+                }
+            }
+            
+            task.resume()
+        }
+        if objectsToggle.pegamentoToggle {
+            
+            let parameters: [String: Any] = [
+                "OBJECTS_ID": 15,
+                "VIDEO_CLUES_ID": 1,
+                "DATE_OF_CREATION": "2023-10-01T00:00:00.000Z",
+                "ACTIVE": "Active"
+            ]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+            } catch {
+                print("Error creating JSON data: \(error)")
+                return
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let data = data {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Response: \(responseString)")
+                    }
+                }
+            }
+            
+            task.resume()
+        }
+        if objectsToggle.plumaToggle {
+            
+            let parameters: [String: Any] = [
+                "OBJECTS_ID": 14,
+                "VIDEO_CLUES_ID": 1,
+                "DATE_OF_CREATION": "2023-10-01T00:00:00.000Z",
+                "ACTIVE": "Active"
+            ]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+            } catch {
+                print("Error creating JSON data: \(error)")
+                return
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let data = data {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Response: \(responseString)")
+                    }
+                }
+            }
+            
+            task.resume()
+        }
+        
+        if objectsToggle.libroToggle {
+            
+            let parameters: [String: Any] = [
+                "OBJECTS_ID": 13,
+                "VIDEO_CLUES_ID": 1,
+                "DATE_OF_CREATION": "2023-10-01T00:00:00.000Z",
+                "ACTIVE": "Active"
+            ]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+            } catch {
+                print("Error creating JSON data: \(error)")
+                return
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let data = data {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Response: \(responseString)")
+                    }
+                }
+            }
+            
+            task.resume()
+        }
+        if objectsToggle.reglaToggle {
+            
+            let parameters: [String: Any] = [
+                "OBJECTS_ID": 16,
+                "VIDEO_CLUES_ID": 1,
+                "DATE_OF_CREATION": "2023-10-01T00:00:00.000Z",
+                "ACTIVE": "Active"
+            ]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+            } catch {
+                print("Error creating JSON data: \(error)")
+                return
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let data = data {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Response: \(responseString)")
+                    }
+                }
+            }
+            
+            task.resume()
+        }
+        
+        if objectsToggle.sacapuntasToggle {
+            
+            let parameters: [String: Any] = [
+                "OBJECTS_ID": 17,
+                "VIDEO_CLUES_ID": 1,
+                "DATE_OF_CREATION": "2023-10-01T00:00:00.000Z",
+                "ACTIVE": "Active"
+            ]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+            } catch {
+                print("Error creating JSON data: \(error)")
+                return
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let data = data {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Response: \(responseString)")
+                    }
+                }
+            }
+            
+            task.resume()
+        }
+
+    }
+    
 }
     // Modelo para almacenar datos relacionados con la creación de juegos
     class CreateGameModel: ObservableObject {
-        @Published var isShowingImagePicker = false
-        @Published var selectedImage: UIImage?
         @Published var titulo = ""
         @Published var descripcion = ""
         @Published var visibilidad = "Pública" // Valor predeterminado
         @Published var categoria = "Escolar" // Valor predeterminado
         @Published var preguntas: [Question] = []  // Arreglo de preguntas
-        
+       
         // Otras propiedades y funciones relacionadas con la creación de juegos
     }
-    
+
+
+
+
 struct CreateGameView_Previews: PreviewProvider {
     static var previews: some View {
         CreateGameView(createGameModel: CreateGameModel())
     }
 }
-
-

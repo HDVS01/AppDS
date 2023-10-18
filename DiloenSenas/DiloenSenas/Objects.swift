@@ -25,6 +25,8 @@ class ObjectsToggle: ObservableObject {
 struct ObjectPickerView: View {
     let objectName: String
     @State private var selectedLevel: String = "Fácil"
+    @State private var urlInput: String = ""
+
     
     var body: some View {
             VStack {
@@ -34,22 +36,44 @@ struct ObjectPickerView: View {
                         .cornerRadius(20)
                         .frame(width: 700, height: 150)
                     
-                    VStack(spacing: 10) {
+                    VStack {
                         Spacer()
+                        
                         Text("Objeto: \(objectName)")
-                            .font(Font.custom("JungleHope", size: 20)) 
+                            .font(Font.custom("Rowdies-Regular", size: 20))
                         Spacer(minLength: 15)
                         HStack(spacing:30){
                             VStack{
-                                Text("Selecciona el nivel de dificultad")
+                                Text("Selecciona la dificultad")
+                                    .font(Font.custom("Rowdies-Regular", size: 15))
                                 Picker("Nivel", selection: $selectedLevel) {
                                     Text("Fácil").tag("Fácil")
                                     Text("Intermedio").tag("Intermedio")
                                     Text("Avanzado").tag("Avanzado")
                                 }
-                                .pickerStyle(SegmentedPickerStyle()).frame(width: 300)
+                                .pickerStyle(SegmentedPickerStyle()).frame(width: 250)
+                                
                             }
-                            Text("o sube tu propia URL")
+                            
+                            VStack {
+                                Text("o")
+                                    .font(Font.custom("Rowdies-Regular", size: 30))
+                            }
+
+                            VStack {
+                                Text("Sube tu propia URL")
+                                    .font(Font.custom("Rowdies-Regular", size: 15))
+                                
+                                TextField("Introduce tu URL aquí", text: $urlInput)
+                                    .font(.custom("Rowdies-Bold", size: 15))
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .frame(width: 250) // Establece el ancho máximo
+                                    .multilineTextAlignment(.center) // Centra el texto dentro del TextField}
+                                    .cornerRadius(10)
+                                    
+
+                            }
+
                             
                         }
                         Spacer()
