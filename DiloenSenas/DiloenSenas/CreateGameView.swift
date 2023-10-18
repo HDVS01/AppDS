@@ -172,8 +172,7 @@ struct CreateGameView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                             .font(Font.custom("Rowdies", size: 25))
-                        
-
+    
                     }
 
                 }

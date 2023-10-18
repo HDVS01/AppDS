@@ -30,7 +30,7 @@ struct LiveSession: View {
                             .cornerRadius(10)
                             .frame(width: 550, height: 350)
                         
-                        VStack(spacing: 0) {
+                        VStack{
                             Image(systemName: "video") // aquí va la imagen o el video
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -41,11 +41,10 @@ struct LiveSession: View {
                         }
                     }
                     
-                    Spacer()
                     
                     VStack {
                         Rectangle()
-                            .strokeBorder(Color(red: 55/255, green: 215/255, blue: 70/255),style: StrokeStyle(lineWidth: 8))
+                            .strokeBorder(Color(red: 55/255, green: 215/255, blue: 70/255),style: StrokeStyle(lineWidth: 5))
                             .overlay(
                                 Group {
                                     if let selectedImage = selectedImage {
@@ -75,8 +74,8 @@ struct LiveSession: View {
                                     
                                 }
                             }) {
-                                Image(systemName: "bolt.fill")
-                                    .foregroundColor(.orange)
+                                Image(systemName: "camera.fill")
+                                    .foregroundColor(.green)
                                     .font(.title)
                             }
                             
@@ -117,22 +116,13 @@ struct LiveSession: View {
                             print("-----------------------------------------------------")
                         }) {
                             Text("Escanear")
-                                .frame(width: 200, height: .infinity)
-                                .padding()
-                                .foregroundColor(.white)
+                                .frame(width: 150, height: 50)
                                 .background(Color(red: 55/255, green: 215/255, blue: 70/255))
+                                .foregroundColor(.white)
                                 .cornerRadius(10)
+                                .font(Font.custom("Rowdies-Regular", size: 20))
                         }
                         .padding()
-                        
-                        Button(action: {
-                            // Acción para el botón de estrella
-                        }) {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(.blue)
-                                .aspectRatio(contentMode: .fit)
-                        }
-                        .padding(.trailing)
                     }
                 }
             }
