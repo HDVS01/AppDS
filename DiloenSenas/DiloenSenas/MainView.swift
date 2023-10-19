@@ -11,6 +11,7 @@ struct MainView: View {
     @State private var isJoinSessionActive = false
     @State private var isCreateSessionActive = false
     @State private var isCreateGameActive = false
+    @ObservedObject var liveSessionViewModel = LiveSessionViewModel()
     
     var body: some View {
         NavigationStack{
@@ -44,7 +45,7 @@ struct MainView: View {
                         }
                         
                         .navigationDestination(isPresented: $isCreateSessionActive) {
-                            CreateSessionView()
+                            LiveSession(viewModel: liveSessionViewModel)
                         }
                         
                         Button(action: {
