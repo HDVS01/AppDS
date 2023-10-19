@@ -27,6 +27,7 @@
 		AF9BD6D32ABBD8F9007E4841 /* LiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BD6D22ABBD8F9007E4841 /* LiveSessionView.swift */; };
 		AF9BD6D52ABBE620007E4841 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9BD6D42ABBE620007E4841 /* QuestionModel.swift */; };
 		AFF3D4922AE08F9C005D372D /* Anton-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFF3D4912AE08F9C005D372D /* Anton-Regular.ttf */; };
+		AFF3D4962AE0BBB3005D372D /* WebKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF3D4952AE0BBB3005D372D /* WebKitView.swift */; };
 		FB2113282AD7148C00783C72 /* ObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2113272AD7148C00783C72 /* ObjectViewModel.swift */; };
 		FB21132A2AD714E900783C72 /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2113292AD714E900783C72 /* ObjectModel.swift */; };
 		FBBCA6AB2ACB2BC3008F33E0 /* LiveSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBCA6AA2ACB2BC3008F33E0 /* LiveSessionViewModel.swift */; };
@@ -56,6 +57,7 @@
 		AF9BD6D42ABBE620007E4841 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		AF9BFABE2ABD2AE8002FB156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AFF3D4912AE08F9C005D372D /* Anton-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Anton-Regular.ttf"; sourceTree = "<group>"; };
+		AFF3D4952AE0BBB3005D372D /* WebKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitView.swift; sourceTree = "<group>"; };
 		FB2113272AD7148C00783C72 /* ObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewModel.swift; sourceTree = "<group>"; };
 		FB2113292AD714E900783C72 /* ObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
 		FBBCA6AA2ACB2BC3008F33E0 /* LiveSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSessionViewModel.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				FBBCA6AC2ACB2BEE008F33E0 /* LiveSessionViewController.swift */,
 				AF9BD6D02ABBD8B7007E4841 /* CreateGameView.swift */,
 				AF815E3F2ABCBF0D00B35168 /* QuestionView.swift */,
+				AFF3D4952AE0BBB3005D372D /* WebKitView.swift */,
 				AF9BD6D42ABBE620007E4841 /* QuestionModel.swift */,
 				AF815E432ABD13FB00B35168 /* classifier.swift */,
 				AF815E412ABCC0D400B35168 /* ImagePicker.swift */,
@@ -219,6 +222,7 @@
 				AF9BD6BF2ABBD84D007E4841 /* MainView.swift in Sources */,
 				AF815E422ABCC0D400B35168 /* ImagePicker.swift in Sources */,
 				FBBCA6AB2ACB2BC3008F33E0 /* LiveSessionViewModel.swift in Sources */,
+				AFF3D4962AE0BBB3005D372D /* WebKitView.swift in Sources */,
 				AF815E402ABCBF0D00B35168 /* QuestionView.swift in Sources */,
 				AF9BD6BD2ABBD84D007E4841 /* DiloenSenasApp.swift in Sources */,
 			);
