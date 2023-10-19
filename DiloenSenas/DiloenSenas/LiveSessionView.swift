@@ -15,7 +15,6 @@ struct LiveSession: View {
     @ObservedObject var viewModel: LiveSessionViewModel // Cambia a usar el ViewModel
     @State private var isShowingAlert = false
     @State private var alertMessage = ""
-    
         
 
     var body: some View {
@@ -61,6 +60,19 @@ struct LiveSession: View {
                         VStack {
                             //print(viewModel.objectsToScan[viewModel.currentObjectIndex].name)
                             Button(action: {
+                                
+                                let userWon = true
+                                let userLose = true
+
+                                if userWon {
+                                    alertMessage = "¡Ganaste!"
+                                } else {
+                                    alertMessage = "Perdiste."
+                                }
+
+                                // Mostrar el pop-up.
+                                isShowingAlert = true
+                
                                 if let selectedImage = selectedImage {
                                     /*
                                      if viewModel.imageClassifier.detect(uiImage: selectedImage) == viewModel.objectsToScan[viewModel.currentObjectIndex].name {
@@ -81,6 +93,10 @@ struct LiveSession: View {
                                     .foregroundColor(.green)
                                     .font(.title)
                             }
+                            
+                            .alert(isPresented: $isShowingAlert) {
+                                        Alert(title: Text("Resultado"), message: Text(alertMessage), dismissButton: .default(Text("Aceptar")))
+                                    }
                             
                             if let imageClass = viewModel.imageClassifier.imageClass {
                                 HStack {
@@ -126,35 +142,6 @@ struct LiveSession: View {
                                 .font(Font.custom("Rowdies-Regular", size: 20))
                         }
                         .padding()
-                        
-                        Button(action: {
-                            // Aquí debes incluir la lógica para determinar si el usuario ganó o perdió
-                            let userWon = true // Cambia esto según tu lógica de juego
-                            
-                            // Configura el mensaje emergente según el resultado
-                            alertMessage = userWon ? "Ganaste" : "Perdiste"
-                            
-                            // Muestra el mensaje emergente
-                            isShowingAlert = true
-                        }) {
-                            Text("Mostrar Popup")
-                                .frame(width: 150, height: 50)
-                                .background(Color(red: 55/255, green: 215/255, blue: 70/255))
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .font(Font.custom("Rowdies-Regular", size: 20))
-                        }
-                        .padding()
-                        .alert(isPresented: $isShowingAlert) {
-                            Alert(
-                                title: Text(alertMessage),
-                                message: Text("Mensaje adicional si es necesario"),
-                                dismissButton: .default(Text("OK")) {
-                                    // Esto se ejecuta cuando el usuario cierra el mensaje emergente
-                                    // Puedes agregar cualquier acción adicional aquí si es necesario
-                                }
-                            )
-                        }
                     }
                 }
             }
