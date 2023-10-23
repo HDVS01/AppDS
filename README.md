@@ -10,6 +10,10 @@ git clone https://github.com/HDVS01/AppDS.git
 ```
 abrir el archivo en Xcode: DiloenSenas.xcodeproj
 Dentro de la carpeta DiloenSenas/DiloenSenas.xcodeproj
+## Modelo de reconocimiento de imagenes
+
+si es necesario tomar el modelo necesario ClasificadorDeImagenes.mlmodel y pegarlo a la raiz del proyecto en XCode
+
 # Subir Base de datos.
 ## Instancia de base de datos
 Debes crear una cuenta en Render y crear una instancia de una base de datos en posgreSQL.
