@@ -1,28 +1,18 @@
 # AppDS
-## How To Use
+# Instrucciones de Instalación
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+Siga estos pasos para ejecutar el proyecto en su entorno local:
+
+Clonar el repositorio en su máquina local en una MAC:
 
 ```bash
-# Clone this repository
-$ git clone https://github.com/amitmerchant1990/electron-markdownify
-
-# Go into the repository
-$ cd electron-markdownify
-
-# Install dependencies
-$ npm install
-
-# Run the app
-$ npm start
+git clone https://github.com/HDVS01/AppDS.git
 ```
-
-> **Note**
-> If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
 # Subir Base de datos.
 ## Instancia de base de datos
 Debes crear una cuenta en Render y crear una instancia de una base de datos en posgreSQL.
+
 [guia de creacion de instancia de base de datos](https://medium.com/geekculture/how-to-create-and-connect-to-a-postgresql-database-with-render-and-pgadmin-577b326fd19d) 
 
 ## Conexion con pgadmin
