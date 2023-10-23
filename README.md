@@ -8,7 +8,8 @@ Clonar el repositorio en su máquina local en una MAC:
 ```bash
 git clone https://github.com/HDVS01/AppDS.git
 ```
-
+abrir el archivo en Xcode: DiloenSenas.xcodeproj
+Dentro de la carpeta DiloenSenas/DiloenSenas.xcodeproj
 # Subir Base de datos.
 ## Instancia de base de datos
 Debes crear una cuenta en Render y crear una instancia de una base de datos en posgreSQL.
