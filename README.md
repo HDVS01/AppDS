@@ -21,13 +21,16 @@ $ npm start
 > If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
 # Subir Base de datos.
+## Instancia de base de datos
 Debes crear una cuenta en Render y crear una instancia de una base de datos en posgreSQL.
 [guia de creacion de instancia de base de datos](https://medium.com/geekculture/how-to-create-and-connect-to-a-postgresql-database-with-render-and-pgadmin-577b326fd19d) 
 
+## Conexion con pgadmin
 Ahora que tines tu base de datos debes conectar esa instancia de posgreSQL a tu pgadmin para poder modificar tus datos
 
 [Guia de conexion a pgadmin](https://community.render.com/t/connecting-to-pgadmin/2024) 
 
+## Base de datos
 crea tu base de datos en pgadmin con el siguiente codigo:
 ```bash
 -- Crear la tabla CATEGORIES
