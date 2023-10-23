@@ -1,5 +1,14 @@
 # AppDS
-![Static Badge](https://img.shields.io/badge/SwiftUI)
+| Tecnología                | Versión  |
+|--------------------------|---------|
+| Express                    | 4.0     |
+| SwiftUI                  | 3.0     |
+| Xcode                    | 14.0    |
+| CO-ML                  | Beta     |
+| UIKit (en combinación)  | 6.0     |
+| NodeJs                | 18.18.2  |
+
+
 # Instrucciones de Instalación
 
 Siga estos pasos para ejecutar el proyecto en su entorno local:
