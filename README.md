@@ -1,4 +1,5 @@
 # AppDS
+![Static Badge](https://img.shields.io/badge/SwiftUI)
 # Instrucciones de Instalación
 
 Siga estos pasos para ejecutar el proyecto en su entorno local:
